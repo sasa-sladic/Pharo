@@ -16,7 +16,7 @@ Lista >> dodajNaPocetak: anObject [
 	noviCvor := anObject asCvor.
 	noviCvor sledeciCvor: prvi.
 	prvi := noviCvor.
-	poslednji vrednost ifNotNil: [ prvi sledeciCvor prethodniCvor: noviCvor ] ifNil:  [ poslednji  := noviCvor ].
+	poslednji ifNotNil: [ prvi sledeciCvor prethodniCvor: noviCvor ] ifNil:  [ poslednji  := noviCvor ].
 	duzina := duzina + 1.
 	^ noviCvor
 ]
@@ -32,16 +32,18 @@ Lista >> initialize [
 	
 	super initialize.
 	duzina  := 0.
-	prvi  := Cvor new.
+	prvi := nil.
+	poslednji := nil.
+	"prvi  := Cvor new.
 	poslednji  := Cvor new.
 	prvi sledeciCvor: poslednji.
-	poslednji prethodniCvor: prvi.
+	poslednji prethodniCvor: prvi."
 ]
 
 { #category : #initialization }
 Lista >> isEmpty [
 
-	^ prvi vrednost isNil and: [ poslednji vrednost isNil ]
+	^ prvi isNil and: [ poslednji isNil ]
 ]
 
 { #category : #initialization }
